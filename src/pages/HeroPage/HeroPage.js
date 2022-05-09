@@ -1,6 +1,6 @@
 import React from 'react';
 import './HeroPage.css';
-import { Container, MenuItem, Paper, Select, TextField } from '@material-ui/core';
+import { Container, MenuItem, Select, TextField } from '@material-ui/core';
 
 
 
@@ -8,9 +8,23 @@ import { Container, MenuItem, Paper, Select, TextField } from '@material-ui/core
 
 export default function HeroPage () {
 
+  const [data, set_data]= React.useState({
+    difficulty: '',
+    type: '',
+    category: 9,
+    number_of_questions: 1,
+  })
 
 
+  const handle_data = (e) => {
+    set_data(prev => ({
+      ...prev,
+      [e.target.name] : e.target.value
+    }))
+  }
 
+
+  console.log(data)
 
 
 
@@ -22,27 +36,24 @@ export default function HeroPage () {
 
 
   return (
-    <Container className='container' style={{width: '80%', background: 'yellow'}}>
+    <Container className='container' style={{width: '80%'}}>
       <h1> Answer It! </h1>
 
       <div className='form'>
-        <TextField 
+
+      <TextField
+          name='number_of_questions'
+          className='TextField'
           type='number' 
           label='Number of Questions' 
-          variant='outlined'/>
+          variant='outlined'
+          onChange={handle_data}
+          value={data.number_of_questions} />
 
-        <Select>
-          <MenuItem value='easy'> Easy </MenuItem>
-          <MenuItem value='medium'> Medium </MenuItem>
-          <MenuItem value='hard'> Hard </MenuItem>
-        </Select>
 
-        <Select>
-          <MenuItem value='multiple'> Multiple Choice </MenuItem>
-          <MenuItem value='boolean'> True / false </MenuItem>
-        </Select>
 
-        <Select>
+        <span> Category </span>
+        <Select className='select' name='category' onChange={handle_data} value={data.category} >
           <MenuItem value={9}> General Knowledge </MenuItem>
           <MenuItem value={10}> Entertainment: Books </MenuItem>
           <MenuItem value={11}> Entertainment: Film </MenuItem>
@@ -67,6 +78,20 @@ export default function HeroPage () {
           <MenuItem value={30}> Science: Gadgets </MenuItem>
           <MenuItem value={31}> Entertainment: Japanese Anime and Manga </MenuItem>
           <MenuItem value={32}> Entertainment: Cartoon and animation </MenuItem>
+        </Select>
+
+    
+        <span> Difficulty </span>
+        <Select className='select' name='difficulty' onChange={handle_data} value={data.difficulty}>
+          <MenuItem value='easy'> Easy </MenuItem>
+          <MenuItem value='medium'> Medium </MenuItem>
+          <MenuItem value='hard'> Hard </MenuItem>
+        </Select>
+ 
+        <span> Type </span>
+        <Select className='select' name='type' onChange={handle_data} value={data.type}>
+          <MenuItem value='multiple'> Multiple Choice </MenuItem>
+          <MenuItem value='boolean'> True / false </MenuItem>
         </Select>
 
       </div>

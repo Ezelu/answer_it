@@ -6,6 +6,19 @@ h1 {
 }
 
 .container {
-  background: yellow;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
   padding: 5% 0;
+}
+
+.select, .TextField {
+  width: 100%;
+  margin-bottom: 2%;
+}
+
+span {
+  display: block;
+  text-align: right;
+  margin: 1% 0;
+  font-size: small;
 }
