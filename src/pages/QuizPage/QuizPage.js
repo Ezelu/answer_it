@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './QuizPage.css';
-import { Return } from '@mui/icons-material';
+import KeyboardReturnIcon from '@mui/icons-material/KeyboardReturn';
 import { Container } from '@material-ui/core';
 import Questions from '../../components/Questions';
 
@@ -39,11 +39,10 @@ export default function QuizPage ({quiz_param}) {
 
   return (
     <Container className='container'>
+      {/* <KeyboardReturnIcon /> */}
       <h1> Quiz! </h1>
 
-
       <Questions questions={questions} />
-
     </Container>
   )
 }
