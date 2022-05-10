@@ -1,12 +1,14 @@
 import React from 'react';
 import './HeroPage.css';
-import { Container, MenuItem, Select, TextField } from '@material-ui/core';
+import { Button, Container, MenuItem, Select, TextField } from '@material-ui/core';
+import { useNavigate } from 'react-router-dom';
 
 
 
+export default function HeroPage ({set_alert, set_quiz_param}) {
 
+  const navigate = useNavigate();
 
-export default function HeroPage () {
 
   const [data, set_data]= React.useState({
     difficulty: '',
@@ -24,7 +26,32 @@ export default function HeroPage () {
   }
 
 
-  console.log(data)
+  const start_quiz = () => {
+    if( data.type.trim().length < 1 ||
+        data.difficulty.trim() < 1 ||
+        data.number_of_questions < 1) {
+
+        set_alert({
+          open: true,
+          message: 'Fill all parameters!',
+          type: 'error'
+        });
+        return;
+       }
+
+    else{
+
+      set_alert({
+        open: true,
+        message: 'Quiz Started!',
+        type: 'success'
+      })
+
+      set_quiz_param(data)
+      navigate('/quiz')
+
+    }
+  }
 
 
 
@@ -53,7 +80,7 @@ export default function HeroPage () {
 
 
         <span> Category </span>
-        <Select className='select' name='category' onChange={handle_data} value={data.category} >
+        <Select className='select' name='category' onChange={handle_data} value={data.category} variant='outlined'>
           <MenuItem value={9}> General Knowledge </MenuItem>
           <MenuItem value={10}> Entertainment: Books </MenuItem>
           <MenuItem value={11}> Entertainment: Film </MenuItem>
@@ -82,18 +109,26 @@ export default function HeroPage () {
 
     
         <span> Difficulty </span>
-        <Select className='select' name='difficulty' onChange={handle_data} value={data.difficulty}>
+        <Select className='select' name='difficulty' onChange={handle_data} value={data.difficulty} variant='outlined'>
           <MenuItem value='easy'> Easy </MenuItem>
           <MenuItem value='medium'> Medium </MenuItem>
           <MenuItem value='hard'> Hard </MenuItem>
         </Select>
  
         <span> Type </span>
-        <Select className='select' name='type' onChange={handle_data} value={data.type}>
+        <Select className='select' name='type' onChange={handle_data} value={data.type} variant='outlined'>
           <MenuItem value='multiple'> Multiple Choice </MenuItem>
           <MenuItem value='boolean'> True / false </MenuItem>
         </Select>
 
+
+        <Button variant='contained' size='large' style={{
+          background: 'orange',
+          marginTop: '2%', 
+          color: 'white'}}
+          onClick={start_quiz}> 
+            Start Quiz! 
+          </Button> 
       </div>
     </Container> 
   )
