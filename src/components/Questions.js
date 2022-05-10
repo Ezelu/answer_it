@@ -46,9 +46,7 @@ export default function Question ({questions}) {
 
             questions.map(each => {
               return (
-                <li> {each.question} <br/>
-                  
-                </li>
+                <li> {each.question} <br/> </li>
               )
             })
           }
