@@ -1,8 +1,14 @@
-.info{
-  display: grid;
-  grid-template-columns: auto auto auto;
+*{
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-aside {
-  width: 100%;
+.info{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  text-align: center;
+}
+
+h2{
+  color: 'green';
 }
