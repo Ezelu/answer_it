@@ -24,7 +24,6 @@ export default function App () {
     number_of_questions: 1,
   });
 
-  console.log(quiz_param)
 
 
   const handleClose = (event, reason) => {

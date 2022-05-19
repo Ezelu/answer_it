@@ -42,7 +42,7 @@ export default function QuizPage ({quiz_param}) {
       {/* <KeyboardReturnIcon /> */}
       <h1> Quiz! </h1>
 
-      <Questions questions={questions} />
+      <Questions questions={questions} loading={loading} />
     </Container>
   )
 }
