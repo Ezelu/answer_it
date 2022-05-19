@@ -259,8 +259,16 @@ export default function Question ({questions, loading}) {
 
       for(let i = 0; i < questions.length; i++){
         //Combine the options and correct answers and sort em randomly
-        const options = questions[i] && 
-          [...questions[i]['incorrect_answers'], questions[i]['correct_answer']].sort(() => Math.random() - 0.5)
+        let options = questions[i] && 
+          [...questions[i]['incorrect_answers'], questions[i]['correct_answer']].sort(() => Math.random() - 0.5);
+        
+        options = options.map(each => {
+          return {
+            value: each,
+            selected: false,
+            question_id: `Q${i}`
+          }
+        })
           
 
         dummy_database[`Q${i}`] = {
