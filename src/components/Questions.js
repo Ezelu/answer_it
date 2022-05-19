@@ -115,10 +115,8 @@ export default function Question ({questions}) {
   const stringToHTML = function (str) {
     let parser = new DOMParser();
     let doc = parser.parseFromString(str, 'text/html');
-    return doc.body;
+    return doc.body.textContent;
   };
-
-  console.log(stringToHTML('hello'))
 
 
 
@@ -156,8 +154,7 @@ export default function Question ({questions}) {
             questions.map(each => {
               console.log(each)
               return (
-                // <li> {stringToHTML(each.question)} <br/> </li>
-                <li> hey </li>
+                <li> {stringToHTML(each.question)} <br/> </li>
               )
             })
           }
