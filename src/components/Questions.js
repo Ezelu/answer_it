@@ -257,14 +257,18 @@ export default function Question ({questions, loading}) {
     (function update_database () {
       let dummy_database = {}
 
-      for(let i = 1; i <= questions.length; i++){
+      for(let i = 0; i < questions.length; i++){
+        //Combine the options and correct answers and sort em randomly
+        const options = questions[i] && 
+          [...questions[i]['incorrect_answers'], questions[i]['correct_answer']].sort(() => Math.random() - 0.5)
+          
 
         dummy_database[`Q${i}`] = {
           correct_answer : questions[i] && questions[i]['correct_answer'],
           user_answer : "",
           question_id : `Q${i}`,
           correct : false,
-          options : []
+          options : [...options]
         };
     
       }
