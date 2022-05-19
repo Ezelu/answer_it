@@ -12,7 +12,7 @@ export default function HeroPage ({set_alert, set_quiz_param}) {
 
   const [data, set_data]= React.useState({
     difficulty: '',
-    type: '',
+    type: 'multiple',
     category: 9,
     number_of_questions: 1,
   })
@@ -113,12 +113,6 @@ export default function HeroPage ({set_alert, set_quiz_param}) {
           <MenuItem value='easy'> Easy </MenuItem>
           <MenuItem value='medium'> Medium </MenuItem>
           <MenuItem value='hard'> Hard </MenuItem>
-        </Select>
- 
-        <span> Type </span>
-        <Select className='select' name='type' onChange={handle_data} value={data.type} variant='outlined'>
-          <MenuItem value='multiple'> Multiple Choice </MenuItem>
-          <MenuItem value='boolean'> True / false </MenuItem>
         </Select>
 
 
