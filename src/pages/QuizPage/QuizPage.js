@@ -32,7 +32,6 @@ export default function QuizPage ({quiz_param}) {
 
 
 
-  console.log(questions)
 
 
 

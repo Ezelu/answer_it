@@ -68,43 +68,10 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import React from 'react';
+// import React, {useState, useEffect} from 'react';
 // import { Container, Chip } from '@material-ui/core';
-// import './Questions.css'
+// import './Questions.css';
+// const clone = require('rfdc')()
 
 
 
@@ -118,36 +85,44 @@
 //   };
 
 //   //set state for database questions and answers
-//   const [database, set_database] = React.useState({});
+//   const [database, set_database] = useState({});
 
+
+//   let dummy_database = {}
 //   !loading &&
 //     (function update_database () {
-//       let dummy_database = {}
+//       // let dummy_database = {}
 
-//       for(let i = 1; i <= questions.length; i++){
-
+//       for(let i = 0; i < questions.length; i++){
+//         //Combine the options and correct answers and sort em randomly
+//         let options = questions[i] && 
+//           [...questions[i]['incorrect_answers'], questions[i]['correct_answer']].sort(() => Math.random() - 0.5);
+        
+//         options = options.map(each => {
+//           return {
+//             value: each,
+//             selected: false,
+//             question_id: `Q${i}`
+//           }
+//         })
+          
 //         dummy_database[`Q${i}`] = {
 //           correct_answer : questions[i] && questions[i]['correct_answer'],
 //           user_answer : "",
 //           question_id : `Q${i}`,
 //           correct : false,
-//           options : []
+//           options : [...options]
 //         };
     
 //       }
-      
-//     console.log(dummy_database)
+
+
+
 //     })()
 
+//   console.log(database)
 
 
-
-//   // category: "Entertainment: Music"
-//   // correct_answer: "The Chemical Brothers"
-//   // difficulty: "medium"
-//   // incorrect_answers: (3) ['Air', 'Justice', 'Daft Punk']
-//   // question: "Which of these artists do NOT originate from France?"
-//   // type: "multiple"
 
   
 
@@ -235,9 +210,25 @@
 
 
 
-import React from 'react';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import React, {useState, useEffect} from 'react';
 import { Container, Chip } from '@material-ui/core';
-import './Questions.css'
+import './Questions.css';
+const clone = require('rfdc')()
 
 
 
@@ -251,11 +242,13 @@ export default function Question ({questions, loading}) {
   };
 
   //set state for database questions and answers
-  const [database, set_database] = React.useState({});
+  const [database, set_database] = useState({});
 
+
+  let dummy_database = {}
   !loading &&
     (function update_database () {
-      let dummy_database = {}
+      // let dummy_database = {}
 
       for(let i = 0; i < questions.length; i++){
         //Combine the options and correct answers and sort em randomly
@@ -270,7 +263,6 @@ export default function Question ({questions, loading}) {
           }
         })
           
-
         dummy_database[`Q${i}`] = {
           correct_answer : questions[i] && questions[i]['correct_answer'],
           user_answer : "",
@@ -280,19 +272,14 @@ export default function Question ({questions, loading}) {
         };
     
       }
-      
-    console.log(dummy_database)
+
+
+
     })()
 
+  console.log(database)
 
 
-
-  // category: "Entertainment: Music"
-  // correct_answer: "The Chemical Brothers"
-  // difficulty: "medium"
-  // incorrect_answers: (3) ['Air', 'Justice', 'Daft Punk']
-  // question: "Which of these artists do NOT originate from France?"
-  // type: "multiple"
 
   
 
