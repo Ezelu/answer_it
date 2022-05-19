@@ -110,18 +110,20 @@ import './Questions.css'
 
 export default function Question ({questions}) {
   
-  
-
+  // Function the parse string to HTML format
   const stringToHTML = function (str) {
     let parser = new DOMParser();
     let doc = parser.parseFromString(str, 'text/html');
     return doc.body.textContent;
   };
 
+  //set state for database questions and answers
+  const [database, set_database] = React.useState({});
+
+  
 
 
-
-
+  
 
 
 
